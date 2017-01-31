@@ -1,5 +1,5 @@
 /*
-    Produce a # triangle
+    Task: Produce a # triangle
     #
     ##
     ###
@@ -10,6 +10,7 @@
     Look in the console for result
 */
 
+// My solution
 var string = "";
 
 for (var i = 0; i < 7; i++) {
@@ -17,7 +18,10 @@ for (var i = 0; i < 7; i++) {
     console.log(string);
 }
 
-//Another cool way of doing it
+/*
+    Eloquent's Solution:
 
-for (var line = "#"; line.length < 8; line += "#")
-    console.log(line);
+    for (var line = "#"; line.length < 8; line += "#")
+    	console.log(line);
+
+*/
