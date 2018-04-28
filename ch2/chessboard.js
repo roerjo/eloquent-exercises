@@ -1,34 +1,24 @@
-//Task: Create an 8x8 chessboard in the console
+//Task: Create an 8x8 chessboard in the console using newlines
 
 //My solution:
 
-var size = 8;
-var startChar;
+let board = '';
+const even = ' # # # #\n', odd = '# # # # \n';
 
-for(var row = 0; row < size; row++) {
-	var layout = "";
-    if(row % 2 == 0)
-    	startChar = " ";
-    else
-    	startChar = "#";
-	for(var col = 0; col < size; col++) {
-    	layout += startChar;
-        if(startChar == " ")
-        	startChar = "#";
-        else
-        	startChar = " ";
-    }
-    console.log(layout)
+for (let i=0; i<8; i++) {
+  board += (i % 2 == 0) ? even : odd;
 }
 
-/*
-	Eloquent's Solution:
-    
-    var size = 8;
-    var board = "";
+console.log(board);
 
-    for (var y = 0; y < size; y++) {
-      for (var x = 0; x < size; x++) {
+/*
+    Eloquent's Solution:
+
+    let size = 8;
+    let board = "";
+
+    for (let y = 0; y < size; y++) {
+      for (let x = 0; x < size; x++) {
         if ((x + y) % 2 == 0)
           board += " ";
         else
