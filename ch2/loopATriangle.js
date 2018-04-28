@@ -10,18 +10,17 @@
     Look in the console for result
 */
 
-// My solution
-var string = "";
+// My Solution
 
-for (var i = 0; i < 7; i++) {
-    string += "#";
-    console.log(string);
+let hash = '#';
+
+while(hash.length < 8) {
+    console.log(hash);
+    hash += '#';
 }
 
 /*
     Eloquent's Solution:
-
-    for (var line = "#"; line.length < 8; line += "#")
-    	console.log(line);
-
+    for (let line = "#"; line.length < 8; line += "#")
+        console.log(line);
 */
