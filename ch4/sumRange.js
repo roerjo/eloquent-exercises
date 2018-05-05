@@ -8,36 +8,58 @@ As a bonus assignment, modify your range function to take an optional third argu
 
 //My solution:
 
-function range(start, end, step) {
-    var list = [];
+function range(start, end, step = 1) {
+    let numbers = [];
 
-    if(step > 0) {
-        for (var i = start; i <= end; i += step) {
-            list.push(i);
+    if (start > end && step < 0) {
+        while (end <= start) {
+            numbers.push(start);
+            start += step;
+        }
+    } else if (start < end && step > 0) {
+        while (start <= end) {
+            numbers.push(start);
+            start += step;
         }
     }
-    else if (step < 0){
-        step = Math.abs(step);
-        for (var j = start; j >= end; j -= step) {
-            list.push(j);
-        }
-    }
-    else {
-        for (var k = start; k <= end; k++) {
-            list.push(k);
-        }
-    }
-      
-    return list;
+
+    return numbers;
 }
 
-function sum(arr) {
-    var result = 0;
-    for (var i = 0; i < arr.length; i++) {
-	result += arr[i];
+function sum(numbers) {
+    let total = 0;
+
+    for (let num of numbers) {
+        total += num;
     }
-    return result;
+
+    return total;
 }
 
 console.log(sum(range(1, 10, 2)));
 console.log(range(5, 2, -1));
+
+/*
+
+    Eloquent's Solution:
+
+    function range(start, end, step = start < end ? 1 : -1) {
+      let array = [];
+
+      if (step > 0) {
+        for (let i = start; i <= end; i += step) array.push(i);
+      } else {
+        for (let i = start; i >= end; i += step) array.push(i);
+      }
+      return array;
+    }
+
+    function sum(array) {
+      let total = 0;
+      for (let value of array) {
+        total += value;
+      }
+      return total;
+    }
+
+*/
