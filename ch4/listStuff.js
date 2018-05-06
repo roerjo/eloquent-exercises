@@ -6,54 +6,47 @@ If you haven’t already, also write a recursive version of nth.
 
 //My solution:
 
-function arrayToList(array) {
-    var list = null;
-    
-    for (var i = array.length - 1; i >= 0; i--) {
-        list = {value: array[i], rest: list};
-    }
-    
-    return list;
+function arrayToList(original) {
+  let reversed = original.reverse();
+  let list = null;
+
+  for (let i of reversed) {
+    list = {
+      value: i,
+      rest: list,
+    };
+  }
+
+  return list;
 }
 
 function listToArray(list) {
-    var arr = [];
+  let newArray = [];
 
-    while(list["rest"]) {
-        arr.push(list["value"]);
-        list = list["rest"];
-    }
-    return arr;
+  while (list.rest) {
+    newArray.push(list.value);
+    list = list.rest;
+  }
+  newArray.push(list.value);
+
+  return newArray;
 }
 
-function prepend(elem, list) {
-    var newList = {value: elem, rest: list};
-    return newList;
+function prepend(element, list) {
+  return {
+    value: element,
+    rest: list
+  };
 }
 
-function nth(list, num) {
-    var count = 0;
-    
-    while(count != num) {
-        list = list["rest"];
-        if (!list)
-          return undefined;
-        count++;
-    }
-
-    return list["value"];
-}
-
-function nthRecursive(list, num) {
-    if(num) {
-        num--;
-        list = list["rest"];
-        if (!list) {
-            return undefined;
-        }
-        return nthRecursive(list, num);
-    }
-    return list["value"];
+function nth(list, index) {
+  if (index === 0) {
+    return list.value;
+  } else if (index !== 0 && list.rest !== null) {
+    return nth(list.rest, index - 1);
+  } else if (index !== 0 && list.rest === null) {
+    return undefined;
+  }
 }
 
 console.log(arrayToList([10, 20]));
@@ -62,32 +55,31 @@ console.log(prepend(10, prepend(20, null)));
 console.log(nthRecursive(arrayToList([10, 20, 30]), 1));
 
 /*
- Eloquent's Solution:
+    Eloquent's Solution:
 
-function arrayToList(array) {
-  var list = null;
-  for (var i = array.length - 1; i >= 0; i--)
-    list = {value: array[i], rest: list};
-  return list;
-}
+    function arrayToList(array) {
+      let list = null;
+      for (let i = array.length - 1; i >= 0; i--) {
+        list = {value: array[i], rest: list};
+      }
+      return list;
+    }
 
-function listToArray(list) {
-  var array = [];
-  for (var node = list; node; node = node.rest)
-    array.push(node.value);
-  return array;
-}
+    function listToArray(list) {
+      let array = [];
+      for (let node = list; node; node = node.rest) {
+        array.push(node.value);
+      }
+      return array;
+    }
 
-function prepend(value, list) {
-  return {value: value, rest: list};
-}
+    function prepend(value, list) {
+      return {value, rest: list};
+    }
 
-function nth(list, n) {
-  if (!list)
-    return undefined;
-  else if (n == 0)
-    return list.value;
-  else
-    return nth(list.rest, n - 1);
-}
+    function nth(list, n) {
+      if (!list) return undefined;
+      else if (n == 0) return list.value;
+      else return nth(list.rest, n - 1);
+    }
 */
