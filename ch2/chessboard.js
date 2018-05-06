@@ -9,8 +9,6 @@ for (let i=0; i<8; i++) {
   board += (i % 2 == 0) ? even : odd;
 }
 
-console.log(board);
-
 /*
     Eloquent's Solution:
 
@@ -26,6 +24,7 @@ console.log(board);
       }
       board += "\n";
     }
+*/
 
 console.log(board);
-*/
+
