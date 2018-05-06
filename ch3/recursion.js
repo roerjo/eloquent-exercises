@@ -5,7 +5,8 @@
 
   For any other number N, its evenness is the same as N - 2.
 
-Define a recursive function isEven corresponding to this description. The function should accept a number parameter and return a Boolean.
+Define a recursive function isEven corresponding to this description. The function should accept a number
+parameter and return a Boolean.
 
 */
 
@@ -26,3 +27,6 @@ function isEven(num) {
         else return isEven(n - 2);
     }
 */
+console.log(isEven(50));
+console.log(isEven(75));
+console.log(isEven(-1));
