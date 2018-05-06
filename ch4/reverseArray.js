@@ -5,31 +5,47 @@ For this exercise, write two functions, reverseArray and reverseArrayInPlace. Th
 
 //My solution:
 
-function reverseArray(arr) {
-    var newArr = [];
-    
-    for(var i = arr.length - 1; i >= 0; i--) {
-        newArr.push(arr[i]);
-    }
-    return newArr;
+function reverseArray(list) {
+  let newList = [];
+  
+  for (let i of list) {
+  	newList.unshift(i);
+  }
+  
+  return newList;
 }
 
-function reverseArrayInPlace(arr) {
-    var start = 0;
-    var end = arr.length - 1;
-    var halfArray = arr.length / 2;
-
-    for(var i = end; i >= halfArray; i--) {
-        var temp = arr[start];
-        arr[start] = arr[i];
-        arr[i] = temp;
-        start++;
-    }
-    return arr;
+function reverseArrayInPlace(list) {
+  for (let i=0; i < list.length; i++) {
+  	list.splice(i, 0, list.pop());
+  }
+  
+  return list;
 }
 
 console.log(reverseArray(["A", "B", "C"]));
 var arrayValue = [1, 2, 3, 4, 5];
 reverseArrayInPlace(arrayValue);
 console.log(arrayValue);
+
+/*
+    Eloquents solution:
+	function reverseArray(array) {
+	  let output = [];
+	  for (let i = array.length - 1; i >= 0; i--) {
+	    output.push(array[i]);
+	  }
+	  return output;
+	}
+
+	function reverseArrayInPlace(array) {
+	  for (let i = 0; i < Math.floor(array.length / 2); i++) {
+	    let old = array[i];
+	    array[i] = array[array.length - 1 - i];
+	    array[array.length - 1 - i] = old;
+	  }
+	  return array;
+	}
+*/
+
 
