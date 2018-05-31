@@ -4,8 +4,7 @@
  */
 
 // My Solution:
-// I'm too lazy to think this one through right now
-
+// I would need to paid to work through this one...
 
 /*
     Eloquent's Solution:
